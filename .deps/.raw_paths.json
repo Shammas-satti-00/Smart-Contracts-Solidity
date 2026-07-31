@@ -1,3 +1,19 @@
 {
-  "Contracts@0.4.0/SimpleStorage.sol": ".deps/npm/Contracts@0.4.0/SimpleStorage.sol"
+  "Contracts@0.4.0/SimpleStorage.sol": ".deps/npm/Contracts@0.4.0/SimpleStorage.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/interfaces/AggregatorV3Interface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/interfaces/AggregatorV3Interface.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/AggregatorV3Interface.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/ChainlinkClient.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/ChainlinkClient.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/LinkTokenInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/LinkTokenInterface.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/vendor/ENSResolver.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/vendor/ENSResolver.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/Chainlink.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/Chainlink.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/vendor/BufferChainlink.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/vendor/BufferChainlink.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/vendor/CBORChainlink.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/vendor/CBORChainlink.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/ChainlinkRequestInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/ChainlinkRequestInterface.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/ENSInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/ENSInterface.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/OperatorInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/OperatorInterface.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/OracleInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/OracleInterface.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/PointerInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/PointerInterface.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwner.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwner.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwnerWithProposal.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwnerWithProposal.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/IOwnable.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/IOwnable.sol"
 }

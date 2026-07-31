@@ -1,0 +1,80 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getChainlinkDataFeedLatestAnswer",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": {
+					"notice": "Network: Sepolia Aggregator: BTC/USD Address: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43"
+				},
+				"getChainlinkDataFeedLatestAnswer()": {
+					"notice": "Returns the latest answer."
+				}
+			},
+			"notice": "If you are reading data feeds on L2 networks, you must check the latest answer from the L2 Sequencer Uptime Feed to ensure that the data is accurate in the event of an L2 sequencer outage. See the https://docs.chain.link/data-feeds/l2-sequencer-feeds page for details.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"PriceConvertor.sol": "DataConsumerV3"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": {
+			"keccak256": "0x257a8d28fa83d3d942547c8e129ef465e4b5f3f31171e7be4739a4c98da6b4f0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6d39e11b1dc7b9b8ccdabbc9be442ab7cda4a81c748f57e316dcb1bcb4a28bf9",
+				"dweb:/ipfs/QmaG6vz6W6iEUBsbHSBob5mdcitYxWjoygxREHpsJHfWrS"
+			]
+		},
+		"PriceConvertor.sol": {
+			"keccak256": "0x4bdceffad76a45a470a1e5bdf957b4fd1e09d7bada3a98b6afd76e707a4c9af4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://027507bd2c3c0a2a99ba4c5cce4a08feefab9e4045f995478738300fef135c97",
+				"dweb:/ipfs/QmXVEj4Eti3hv9kfC7BESrossMjDwDHQ458jayxR1Ym9en"
+			]
+		}
+	},
+	"version": 1
+}

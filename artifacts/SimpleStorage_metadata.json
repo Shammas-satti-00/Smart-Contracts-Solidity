@@ -106,7 +106,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Contracts/SimpleStorage.sol": "SimpleStorage"
+			"SimpleStorage.sol": "SimpleStorage"
 		},
 		"evmVersion": "osaka",
 		"libraries": {},
@@ -120,12 +120,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"Contracts/SimpleStorage.sol": {
-			"keccak256": "0xbd2f483df7cd11eae726d0ebe858591d98aced41877232720b9a76f4ab39182e",
+		"SimpleStorage.sol": {
+			"keccak256": "0xf3388c3bdea4a20d032961ae07919bb70102d3cfb917dab3de3141a23363ed47",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7c2bfa24a78e334c4eb1081221b993901e1280706243094a1e2c85ef1e65795c",
-				"dweb:/ipfs/QmbmaMA7u8x2f4U29GCrjuLyoxHkW615inuptBeSKBRLvb"
+				"bzz-raw://134875b66389aad5893bcfd5a70b463d8e2115f9e6696348af94ad1826de5dcf",
+				"dweb:/ipfs/QmWxRhK9SrRERhz79tkxBwu2Rqrd8GbMCJm3rFujge4EZ7"
 			]
 		}
 	},
