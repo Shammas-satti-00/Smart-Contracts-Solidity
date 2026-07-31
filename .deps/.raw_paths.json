@@ -15,5 +15,6 @@
   "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/PointerInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/interfaces/PointerInterface.sol",
   "@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwner.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwner.sol",
   "@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwnerWithProposal.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwnerWithProposal.sol",
-  "@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/IOwnable.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/IOwnable.sol"
+  "@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/IOwnable.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/IOwnable.sol",
+  "@chainlink/contracts@1.5.0/src/v0.8./interfaces/AggregatorV3Interface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8./interfaces/AggregatorV3Interface.sol"
 }

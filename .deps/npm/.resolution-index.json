@@ -41,14 +41,6 @@
       }
     }
   },
-  "FundMe.sol": {
-    "__sources__": {
-      "FundMe.sol": {
-        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.30;\r\ncontract FundMe\r\n{   uint256 public minimumUSD;\r\n    function fund() public payable {\r\n        \r\n        require(msg.value >= minimumUSD, \"You need to spend more ETH!\");\r\n    }\r\n    //function withdraw(){}    \r\n}",
-        "file": "FundMe.sol"
-      }
-    }
-  },
   "PriceConvertor.sol": {
     "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/AggregatorV3Interface.sol",
     "__sources__": {
@@ -87,14 +79,6 @@
   },
   "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol": {
     "./ConfirmedOwnerWithProposal.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwnerWithProposal.sol"
-  },
-  "SimpleStorage.sol": {
-    "__sources__": {
-      "SimpleStorage.sol": {
-        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.34;\r\ncontract SimpleStorage { \r\n    uint256 favoriteNumber;\r\n\r\n    struct People {\r\n        uint256 favoriteNumber;\r\n        string name;\r\n    }\r\n    // uint256[] public anArray;\r\n    People[] public people;\r\n\r\n    mapping(string => uint256) public nameToFavoriteNumber;\r\n\r\n    function store(uint256 _favoriteNumber) public virtual {\r\n        favoriteNumber = _favoriteNumber;\r\n    }\r\n    \r\n    function retrieve() public view returns (uint256){\r\n        return favoriteNumber;\r\n    }\r\n\r\n    function addPerson(string memory _name, uint256 _favoriteNumber) public {\r\n        people.push(People(_favoriteNumber, _name));\r\n        nameToFavoriteNumber[_name] = _favoriteNumber;\r\n    }\r\n}",
-        "file": "SimpleStorage.sol"
-      }
-    }
   },
   "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/ChainlinkClient.sol": {
     "../shared/interfaces/LinkTokenInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/LinkTokenInterface.sol",
@@ -188,5 +172,26 @@
   },
   "@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwner.sol": {
     "./ConfirmedOwnerWithProposal.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwnerWithProposal.sol"
+  },
+  "FundMe.sol": {
+    "__sources__": {
+      "FundMe.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.30;\r\nimport \"\";\r\ncontract FundMe\r\n{   uint256 public minimumUSD;\r\n    function fund() public payable {\r\n\r\n        require(msg.value >= minimumUSD, \"You need to spend more ETH!\");\r\n    }\r\n    function getPrice public ()\r\n    {   //0xE4aB69C077896252FAFBD49EFD26B5D171A32410\r\n\r\n\r\n    }\r\n    function getConversionRate public (){\r\n\r\n    }\r\n\r\n    function withdraw(){}    \r\n}",
+        "file": "FundMe.sol"
+      }
+    }
+  },
+  "ExtraStorage.sol": {
+    "./SimpleStorage.sol": "SimpleStorage.sol",
+    "__sources__": {
+      "ExtraStorage.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.34;\r\nimport \"./SimpleStorage.sol\";\r\n\r\ncontract ExtraStorage is SimpleStorage {\r\n    function store(uint256 _favoriteNumber) public override {\r\n        favoriteNumber = _favoriteNumber + 5;\r\n    }\r\n}",
+        "file": "ExtraStorage.sol"
+      },
+      "SimpleStorage.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.34;\r\ncontract SimpleStorage { \r\n    uint256 favoriteNumber;\r\n\r\n    struct People {\r\n        uint256 favoriteNumber;\r\n        string name;\r\n    }\r\n    // uint256[] public anArray;\r\n    People[] public people;\r\n\r\n    mapping(string => uint256) public nameToFavoriteNumber;\r\n\r\n    function store(uint256 _favoriteNumber) public virtual {\r\n        favoriteNumber = _favoriteNumber;\r\n    }\r\n    \r\n    function retrieve() public view returns (uint256){\r\n        return favoriteNumber;\r\n    }\r\n\r\n    function addPerson(string memory _name, uint256 _favoriteNumber) public {\r\n        people.push(People(_favoriteNumber, _name));\r\n        nameToFavoriteNumber[_name] = _favoriteNumber;\r\n    }\r\n}",
+        "file": "SimpleStorage.sol"
+      }
+    }
   }
 }
