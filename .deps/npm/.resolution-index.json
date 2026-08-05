@@ -41,19 +41,6 @@
       }
     }
   },
-  "PriceConvertor.sol": {
-    "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/AggregatorV3Interface.sol",
-    "__sources__": {
-      "PriceConvertor.sol": {
-        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.30;\r\n\r\nimport {AggregatorV3Interface} from \"@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol\";\r\n\r\n/**\r\n * THIS IS AN EXAMPLE CONTRACT THAT USES HARDCODED\r\n * VALUES FOR CLARITY.\r\n * THIS IS AN EXAMPLE CONTRACT THAT USES UN-AUDITED CODE.\r\n * DO NOT USE THIS CODE IN PRODUCTION.\r\n */\r\n\r\n/**\r\n * If you are reading data feeds on L2 networks, you must\r\n * check the latest answer from the L2 Sequencer Uptime\r\n * Feed to ensure that the data is accurate in the event\r\n * of an L2 sequencer outage. See the\r\n * https://docs.chain.link/data-feeds/l2-sequencer-feeds\r\n * page for details.\r\n */\r\ncontract DataConsumerV3 {\r\n  AggregatorV3Interface internal dataFeed;\r\n\r\n  /**\r\n   * Network: Sepolia\r\n   * Aggregator: BTC/USD\r\n   * Address: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43\r\n   */\r\n  constructor() {\r\n    dataFeed = AggregatorV3Interface(0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43);\r\n  }\r\n\r\n  /**\r\n   * Returns the latest answer.\r\n   */\r\n  function getChainlinkDataFeedLatestAnswer() public view returns (int256) {\r\n    // prettier-ignore\r\n    (\r\n      /* uint80 roundId */\r\n      ,\r\n      int256 answer,\r\n      /*uint256 startedAt*/\r\n      ,\r\n      /*uint256 updatedAt*/\r\n      ,\r\n      /*uint80 answeredInRound*/\r\n    ) = dataFeed.latestRoundData();\r\n    return answer;\r\n  }\r\n}\r\n",
-        "file": "PriceConvertor.sol"
-      },
-      "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": {
-        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n// solhint-disable-next-line interface-starts-with-i\ninterface AggregatorV3Interface {\n  function decimals() external view returns (uint8);\n\n  function description() external view returns (string memory);\n\n  function version() external view returns (uint256);\n\n  function getRoundData(\n    uint80 _roundId\n  ) external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);\n\n  function latestRoundData()\n    external\n    view\n    returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);\n}\n",
-        "file": "@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/AggregatorV3Interface.sol"
-      }
-    }
-  },
   "@chainlink/contracts/src/v0.8/operatorforwarder/ChainlinkClient.sol": {
     "../shared/interfaces/LinkTokenInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/LinkTokenInterface.sol",
     "../vendor/ENSResolver.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/vendor/ENSResolver.sol",
@@ -79,6 +66,32 @@
   },
   "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol": {
     "./ConfirmedOwnerWithProposal.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/access/ConfirmedOwnerWithProposal.sol"
+  },
+  "StorageFactor.sol": {
+    "./SimpleStorage.sol": "SimpleStorage.sol",
+    "__sources__": {
+      "StorageFactor.sol": {
+        "content": "// SPDX-License-Identifier: MIT \r\n\r\npragma solidity ^0.8.34;\r\n\r\nimport \"./SimpleStorage.sol\"; \r\n\r\ncontract StorageFactory {\r\n    \r\n    SimpleStorage[] public simpleStorageArray;\r\n    \r\n    function createSimpleStorageContract() public {\r\n        SimpleStorage simpleStorage = new SimpleStorage();\r\n        simpleStorageArray.push(simpleStorage);\r\n    }\r\n    \r\n    function sfStore(uint256 _simpleStorageIndex, uint256 _simpleStorageNumber) public {\r\n        // Address \r\n        // ABI \r\n        // SimpleStorage(address(simpleStorageArray[_simpleStorageIndex])).store(_simpleStorageNumber);\r\n        simpleStorageArray[_simpleStorageIndex].store(_simpleStorageNumber);\r\n    }\r\n    \r\n    function sfGet(uint256 _simpleStorageIndex) public view returns (uint256) {\r\n        // return SimpleStorage(address(simpleStorageArray[_simpleStorageIndex])).retrieve();\r\n        return simpleStorageArray[_simpleStorageIndex].retrieve();\r\n    }\r\n}",
+        "file": "StorageFactor.sol"
+      },
+      "SimpleStorage.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.34;\r\ncontract SimpleStorage { \r\n    uint256 favoriteNumber;\r\n\r\n    struct People {\r\n        uint256 favoriteNumber;\r\n        string name;\r\n    }\r\n    // uint256[] public anArray;\r\n    People[] public people;\r\n\r\n    mapping(string => uint256) public nameToFavoriteNumber;\r\n\r\n    function store(uint256 _favoriteNumber) public virtual {\r\n        favoriteNumber = _favoriteNumber;\r\n    }\r\n    \r\n    function retrieve() public view returns (uint256){\r\n        return favoriteNumber;\r\n    }\r\n\r\n    function addPerson(string memory _name, uint256 _favoriteNumber) public {\r\n        people.push(People(_favoriteNumber, _name));\r\n        nameToFavoriteNumber[_name] = _favoriteNumber;\r\n    }\r\n}",
+        "file": "SimpleStorage.sol"
+      }
+    }
+  },
+  "ExtraStorage.sol": {
+    "./SimpleStorage.sol": "SimpleStorage.sol",
+    "__sources__": {
+      "ExtraStorage.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.34;\r\nimport \"./SimpleStorage.sol\";\r\n\r\ncontract ExtraStorage is SimpleStorage {\r\n    function store(uint256 _favoriteNumber) public override {\r\n        favoriteNumber = _favoriteNumber + 5;\r\n    }\r\n}",
+        "file": "ExtraStorage.sol"
+      },
+      "SimpleStorage.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.34;\r\ncontract SimpleStorage { \r\n    uint256 favoriteNumber;\r\n\r\n    struct People {\r\n        uint256 favoriteNumber;\r\n        string name;\r\n    }\r\n    // uint256[] public anArray;\r\n    People[] public people;\r\n\r\n    mapping(string => uint256) public nameToFavoriteNumber;\r\n\r\n    function store(uint256 _favoriteNumber) public virtual {\r\n        favoriteNumber = _favoriteNumber;\r\n    }\r\n    \r\n    function retrieve() public view returns (uint256){\r\n        return favoriteNumber;\r\n    }\r\n\r\n    function addPerson(string memory _name, uint256 _favoriteNumber) public {\r\n        people.push(People(_favoriteNumber, _name));\r\n        nameToFavoriteNumber[_name] = _favoriteNumber;\r\n    }\r\n}",
+        "file": "SimpleStorage.sol"
+      }
+    }
   },
   "@chainlink/contracts@1.5.0/src/v0.8/operatorforwarder/ChainlinkClient.sol": {
     "../shared/interfaces/LinkTokenInterface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/LinkTokenInterface.sol",
@@ -176,21 +189,21 @@
   "FundMe.sol": {
     "__sources__": {
       "FundMe.sol": {
-        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.30;\r\nimport \"\";\r\ncontract FundMe\r\n{   uint256 public minimumUSD;\r\n    function fund() public payable {\r\n\r\n        require(msg.value >= minimumUSD, \"You need to spend more ETH!\");\r\n    }\r\n    function getPrice public ()\r\n    {   //0xE4aB69C077896252FAFBD49EFD26B5D171A32410\r\n\r\n\r\n    }\r\n    function getConversionRate public (){\r\n\r\n    }\r\n\r\n    function withdraw(){}    \r\n}",
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.30;\r\n//import \"@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol\";\r\ncontract FundMe\r\n{   uint256 public minimumUSD;\r\n\r\n    function fund() public payable {\r\n\r\n        require(msg.value >= minimumUSD, \"You need to spend more ETH!\");\r\n    }\r\n    function getPrice public view returns  ()\r\n    {   //0xE4aB69C077896252FAFBD49EFD26B5D171A32410\r\n    AggregatorV3Interface pricefeed = AggregatorV3Interface(0xE4aB69C077896252FAFBD49EFD26B5D171A32410);\r\n    (,int256 price,,,) = pricefeed.latestRoundData();\r\n    minimumUSD = 50 * 10**18 / uint256(price);\r\n    }\r\n    }\r\n    function getVersion public view  returns (uint256) {\r\n        AggregatorV3Interface pricefeed = AggregatorV3Interface(0xE4aB69C077896252FAFBD49EFD26B5D171A32410);\r\n        return pricefeed.version();\r\n    } \r\n    function getConversionRate public (){\r\n        uint256 ethPrice =getPrice();\r\n        uint256 ethAmountInUsd = (ethPrice *ethAmount) /1e18;\r\n        return ethAmountInUsd;\r\n     }\r\n  //  function withdraw(){}    \r\n}",
         "file": "FundMe.sol"
       }
     }
   },
-  "ExtraStorage.sol": {
-    "./SimpleStorage.sol": "SimpleStorage.sol",
+  "PriceConvertor.sol": {
+    "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": ".deps/npm/@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/AggregatorV3Interface.sol",
     "__sources__": {
-      "ExtraStorage.sol": {
-        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.34;\r\nimport \"./SimpleStorage.sol\";\r\n\r\ncontract ExtraStorage is SimpleStorage {\r\n    function store(uint256 _favoriteNumber) public override {\r\n        favoriteNumber = _favoriteNumber + 5;\r\n    }\r\n}",
-        "file": "ExtraStorage.sol"
+      "PriceConvertor.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.30;\r\n\r\nimport {AggregatorV3Interface} from \"@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol\";\r\n\r\ncontract DataConsumerV3 {\r\n  AggregatorV3Interface internal dataFeed;\r\n\r\n  /**\r\n   * Network: Sepolia\r\n   * Aggregator: BTC/USD\r\n   * Address: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43\r\n   */\r\n  constructor() {\r\n    dataFeed = AggregatorV3Interface(0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43);\r\n  }\r\n\r\n  /**\r\n   * Returns the latest answer.\r\n   */\r\n  function getChainlinkDataFeedLatestAnswer() public view returns (int256) {\r\n    // prettier-ignore\r\n    (\r\n      /* uint80 roundId */\r\n      ,\r\n      int256 answer,\r\n      /*uint256 startedAt*/\r\n      ,\r\n      /*uint256 updatedAt*/\r\n      ,\r\n      /*uint80 answeredInRound*/\r\n    ) = dataFeed.latestRoundData();\r\n    return answer;\r\n  }\r\n}\r\n",
+        "file": "PriceConvertor.sol"
       },
-      "SimpleStorage.sol": {
-        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.34;\r\ncontract SimpleStorage { \r\n    uint256 favoriteNumber;\r\n\r\n    struct People {\r\n        uint256 favoriteNumber;\r\n        string name;\r\n    }\r\n    // uint256[] public anArray;\r\n    People[] public people;\r\n\r\n    mapping(string => uint256) public nameToFavoriteNumber;\r\n\r\n    function store(uint256 _favoriteNumber) public virtual {\r\n        favoriteNumber = _favoriteNumber;\r\n    }\r\n    \r\n    function retrieve() public view returns (uint256){\r\n        return favoriteNumber;\r\n    }\r\n\r\n    function addPerson(string memory _name, uint256 _favoriteNumber) public {\r\n        people.push(People(_favoriteNumber, _name));\r\n        nameToFavoriteNumber[_name] = _favoriteNumber;\r\n    }\r\n}",
-        "file": "SimpleStorage.sol"
+      "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n// solhint-disable-next-line interface-starts-with-i\ninterface AggregatorV3Interface {\n  function decimals() external view returns (uint8);\n\n  function description() external view returns (string memory);\n\n  function version() external view returns (uint256);\n\n  function getRoundData(\n    uint80 _roundId\n  ) external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);\n\n  function latestRoundData()\n    external\n    view\n    returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);\n}\n",
+        "file": "@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/AggregatorV3Interface.sol"
       }
     }
   }
