@@ -206,5 +206,32 @@
         "file": "@chainlink/contracts@1.5.0/src/v0.8/shared/interfaces/AggregatorV3Interface.sol"
       }
     }
+  },
+  "SafeMath.sol": {
+    "__sources__": {}
+  },
+  "FallBack.sol": {
+    "__sources__": {
+      "FallBack.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.7;\r\n\r\ncontract FallbackExample {\r\n    uint256 public result;\r\n\r\n    // Fallback function must be declared as external.\r\n    fallback() external payable {\r\n        result = 1;\r\n    }\r\n\r\n    receive() external payable {\r\n        result = 2;\r\n    }\r\n}",
+        "file": "FallBack.sol"
+      }
+    }
+  },
+  "SafeMathV6.sol": {
+    "__sources__": {
+      "SafeMathV6.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract SafeMathTester{\r\n    uint8 public bigNumber = 255; // unchecked\r\n\r\n    function add() public {\r\n        bigNumber = bigNumber + 1;\r\n    }\r\n}",
+        "file": "SafeMathV6.sol"
+      }
+    }
+  },
+  "SadeMathV8.sol": {
+    "__sources__": {
+      "SadeMathV8.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract SafeMathTester{\r\n    uint8 public bigNumber = 255; // checked\r\n\r\n    function add() public {\r\n        unchecked {bigNumber = bigNumber + 1;}\r\n    }\r\n}",
+        "file": "SadeMathV8.sol"
+      }
+    }
   }
 }
