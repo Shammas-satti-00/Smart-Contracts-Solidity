@@ -229,6 +229,22 @@
       }
     }
   },
+  "CounterContract.sol": {
+    "__sources__": {
+      "CounterContract.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.30;\r\ncontract CounterProject\r\n{\r\n    uint256 number;\r\n    event Incremented(uint256 newValue);\r\n    event Decremented(uint256 newValue);\r\n    event Reseted(uint256 newValue);\r\n   \r\n   constructor (){\r\n    number =0;\r\n    }\r\n    function Increment() public returns(uint256) {\r\n        number++;\r\n        emit Incremented(number);\r\n        return number;\r\n    } \r\n    function Decrement() public returns(uint256) {\r\n        require(number!=0);\r\n        number--;\r\n         emit Decremented(number);\r\n        return number;\r\n    }\r\n    function Reset() external returns(uint256){\r\n               number=0;\r\n         emit Reseted(number);\r\n        return number;\r\n    }\r\n\r\n}",
+        "file": "CounterContract.sol"
+      }
+    }
+  },
+  "BackAccountContract.sol": {
+    "__sources__": {
+      "BackAccountContract.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.19;\r\ncontract BankAccount{\r\n\r\nmapping (address=> uint256) public balances;\r\nevent Deposited(address indexed user, uint256 amount);\r\nevent Withdrawn(address indexed user, uint256 amount);\r\n\r\nfunction deposit() public payable\r\n{\r\n    balances[msg.sender] = balances[msg.sender]+ msg.value;\r\n    emit Deposited(msg.sender,msg.value);\r\n\r\n}\r\n\r\nfunction withdraw(uint256 _amount) public\r\n{  \r\n     require(balances[msg.sender]>=_amount,\"not enough balance\" );\r\n   balances[msg.sender] -= _amount; \r\n(bool success, ) = msg.sender.call{value: _amount}(\"\");\r\nrequire(success, \"Transfer failed\");\r\n    emit Withdrawn(msg.sender, _amount);\r\n}\r\n\r\nreceive() external payable { \r\n    balances[msg.sender] = balances[msg.sender]+ msg.value;\r\n  emit Deposited(msg.sender, msg.value);\r\n}\r\n}",
+        "file": "BackAccountContract.sol"
+      }
+    }
+  },
   "ExtraStorage.sol": {
     "./SimpleStorage.sol": "SimpleStorage.sol",
     "__sources__": {
@@ -239,14 +255,6 @@
       "SimpleStorage.sol": {
         "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.34;\r\ncontract SimpleStorage { \r\n    uint256 favoriteNumber;\r\n\r\n    struct People {\r\n        uint256 favoriteNumber;\r\n        string name;\r\n    }\r\n    // uint256[] public anArray;\r\n    People[] public people;\r\n\r\n    mapping(string => uint256) public nameToFavoriteNumber;\r\n\r\n    function store(uint256 _favoriteNumber) public virtual {\r\n        favoriteNumber = _favoriteNumber;\r\n    }\r\n    \r\n    function retrieve() public view returns (uint256){\r\n        return favoriteNumber;\r\n    }\r\n\r\n    function addPerson(string memory _name, uint256 _favoriteNumber) public {\r\n        people.push(People(_favoriteNumber, _name));\r\n        nameToFavoriteNumber[_name] = _favoriteNumber;\r\n    }\r\n}",
         "file": "SimpleStorage.sol"
-      }
-    }
-  },
-  "CounterContract.sol": {
-    "__sources__": {
-      "CounterContract.sol": {
-        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.30;\r\ncontract CounterProject\r\n{\r\n    uint256 number;\r\n    event Incremented(uint256 newValue);\r\n    event Decremented(uint256 newValue);\r\n    event Reseted(uint256 newValue);\r\n   \r\n   constructor (){\r\n    number =0;\r\n    }\r\n    function Increment() public returns(uint256) {\r\n        number++;\r\n        emit Incremented(number);\r\n        return number;\r\n    } \r\n    function Decrement() public returns(uint256) {\r\n        require(number!=0);\r\n        number--;\r\n         emit Decremented(number);\r\n        return number;\r\n    }\r\n    function Reset() external returns(uint256){\r\n               number=0;\r\n         emit Reseted(number);\r\n        return number;\r\n    }\r\n\r\n}",
-        "file": "CounterContract.sol"
       }
     }
   }
